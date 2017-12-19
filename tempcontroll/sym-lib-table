@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name MY)(type Legacy)(uri /home/vovan/projects/tempcontroll/tempcontroll/MY.lib)(options "")(descr ""))
+)
