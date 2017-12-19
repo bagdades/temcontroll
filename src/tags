@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AS	Makefile	/^AS = avr-gcc$/;"	m
+CC	Makefile	/^CC = avr-gcc$/;"	m
+CP	Makefile	/^CP = avr-objcopy$/;"	m
+F_CPU	usart.h	6;"	d
+ISR	usart.c	/^ISR(USART_RXC_vect){$/;"	f
+ISR	usart.c	/^ISR(USART_TXC_vect){$/;"	f
+LD	Makefile	/^LD = avr-gcc$/;"	m
+MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
+OD	Makefile	/^OD = avr-objdump$/;"	m
+RM	Makefile	/^RM = rm$/;"	m
+SZ	Makefile	/^SZ = avr-size$/;"	m
+TARGET	Makefile	/^TARGET = tempcontroll$/;"	m
+USART_BAUDRATE	usart.h	8;"	d
+USART_BAUDRATE_DIV	usart.h	11;"	d
+USART_INC	usart.h	2;"	d
+USART_RX_BUFFER_SIZE	usart.h	10;"	d
+USART_TX_BUFFER_SIZE	usart.h	9;"	d
+UsartGetChar	usart.c	/^uint8_t  UsartGetChar(void){$/;"	f	signature:(void)
+UsartGetChar	usart.h	/^uint8_t UsartGetChar	(void);$/;"	p	signature:(void)
+UsartInit	usart.c	/^void UsartInit(void){$/;"	f	signature:(void)
+UsartInit	usart.h	/^void UsartInit			(void);$/;"	p	signature:(void)
+UsartPutChar	usart.c	/^void UsartPutChar(uint8_t ch){$/;"	f	signature:(uint8_t ch)
+UsartPutChar	usart.h	/^void UsartPutChar		(uint8_t ch);$/;"	p	signature:(uint8_t ch)
+UsartPutString	usart.c	/^void UsartPutString(uint8_t *string){$/;"	f	signature:(uint8_t *string)
+UsartPutString	usart.h	/^void UsartPutString		(uint8_t *string);$/;"	p	signature:(uint8_t *string)
+ch	usart.c	/^	uint8_t ch = 0;$/;"	l
+i	usart.c	/^	uint16_t i = USART_BAUDRATE_DIV;$/;"	l
+main	main.c	/^int main(void)$/;"	f	signature:(void)
+usartRxBuffer	usart.h	/^volatile uint8_t usartRxBuffer[USART_TX_BUFFER_SIZE];$/;"	v
+usartTxBuffer	usart.h	/^volatile uint8_t usartTxBuffer[USART_TX_BUFFER_SIZE];$/;"	v

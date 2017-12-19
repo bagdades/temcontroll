@@ -1,0 +1,5 @@
+syn keyword CTagsLocalVariable ch i
+syn keyword CTagsGlobalVariable usartTxBuffer usartRxBuffer
+syn keyword CTagsFunction UsartInit UsartGetChar UsartPutString main ISR UsartPutChar
+syn keyword CTagsDefinedName USART_BAUDRATE USART_RX_BUFFER_SIZE USART_TX_BUFFER_SIZE F_CPU USART_BAUDRATE_DIV USART_INC
+
