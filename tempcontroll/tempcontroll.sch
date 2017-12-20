@@ -493,11 +493,11 @@ Wire Wire Line
 Wire Wire Line
 	6400 3900 6600 3900
 Text Label 6600 4100 0    60   ~ 0
-D1
+D3
 Text Label 6600 4000 0    60   ~ 0
 D2
 Text Label 6600 3900 0    60   ~ 0
-D3
+D1
 NoConn ~ 6400 3800
 NoConn ~ 6400 3700
 $Comp

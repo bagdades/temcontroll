@@ -14,17 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L atmel:ATMEGA8-16AU U1
-U 1 1 5A3910FB
-P 5400 3900
-F 0 "U1" H 4700 5100 50  0000 C CNN
-F 1 "ATMEGA8-16AU" H 5950 5100 50  0000 C CNN
-F 2 "Housings_QFP:LQFP-32_7x7mm_Pitch0.8mm" H 5400 3900 50  0001 C CIN
-F 3 "http://www.atmel.com/images/atmel-2486-8-bit-avr-microcontroller-atmega8_l_datasheet.pdf" H 5400 3900 50  0001 C CNN
-	1    5400 3900
-	1    0    0    -1  
-$EndComp
 Text Label 4750 2550 2    60   ~ 0
 RES
 Text Label 6550 3200 0    60   ~ 0
@@ -83,57 +72,31 @@ Wire Wire Line
 Wire Wire Line
 	9750 1600 9600 1600
 $Comp
-L power:GND #PWR010
-U 1 1 5A391FE8
-P 5350 5600
-F 0 "#PWR010" H 5350 5350 50  0001 C CNN
-F 1 "GND" H 5355 5427 50  0000 C CNN
-F 2 "" H 5350 5600 50  0001 C CNN
-F 3 "" H 5350 5600 50  0001 C CNN
-	1    5350 5600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5350 5600 5350 5500
-$Comp
 L power:GND #PWR012
 U 1 1 5A3920AD
-P 5450 5600
-F 0 "#PWR012" H 5450 5350 50  0001 C CNN
-F 1 "GND" H 5455 5427 50  0000 C CNN
-F 2 "" H 5450 5600 50  0001 C CNN
-F 3 "" H 5450 5600 50  0001 C CNN
-	1    5450 5600
+P 5400 5600
+F 0 "#PWR012" H 5400 5350 50  0001 C CNN
+F 1 "GND" H 5405 5427 50  0000 C CNN
+F 2 "" H 5400 5600 50  0001 C CNN
+F 3 "" H 5400 5600 50  0001 C CNN
+	1    5400 5600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5450 5600 5450 5500
+	5400 5600 5400 5500
 $Comp
 L power:+5V #PWR09
 U 1 1 5A39218F
-P 5350 2500
-F 0 "#PWR09" H 5350 2350 50  0001 C CNN
-F 1 "+5V" H 5250 2650 50  0000 C CNN
-F 2 "" H 5350 2500 50  0001 C CNN
-F 3 "" H 5350 2500 50  0001 C CNN
-	1    5350 2500
+P 5400 2500
+F 0 "#PWR09" H 5400 2350 50  0001 C CNN
+F 1 "+5V" H 5300 2650 50  0000 C CNN
+F 2 "" H 5400 2500 50  0001 C CNN
+F 3 "" H 5400 2500 50  0001 C CNN
+	1    5400 2500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5350 2500 5350 2550
-$Comp
-L power:+5V #PWR011
-U 1 1 5A3922D9
-P 5450 2500
-F 0 "#PWR011" H 5450 2350 50  0001 C CNN
-F 1 "+5V" H 5550 2650 50  0000 C CNN
-F 2 "" H 5450 2500 50  0001 C CNN
-F 3 "" H 5450 2500 50  0001 C CNN
-	1    5450 2500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5450 2500 5450 2600
+	5400 2500 5400 2550
 $Comp
 L power:GND #PWR08
 U 1 1 5A392409
@@ -212,10 +175,10 @@ F 3 "" H 5000 2550 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5150 2550 5350 2550
-Connection ~ 5350 2550
+	5150 2550 5400 2550
+Connection ~ 5400 2550
 Wire Wire Line
-	5350 2550 5350 2600
+	5400 2550 5400 2600
 Wire Wire Line
 	4850 2550 4400 2550
 Wire Wire Line
@@ -498,37 +461,31 @@ $EndComp
 $Comp
 L Connector:Conn_01x03 J11
 U 1 1 5A3B8700
-P 7100 4500
-F 0 "J11" H 7180 4542 50  0000 L CNN
-F 1 "Conn_01x03" H 7180 4451 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 7100 4500 50  0001 C CNN
-F 3 "~" H 7100 4500 50  0001 C CNN
-	1    7100 4500
+P 7100 4300
+F 0 "J11" H 7180 4342 50  0000 L CNN
+F 1 "Conn_01x03" H 7180 4251 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 7100 4300 50  0001 C CNN
+F 3 "~" H 7100 4300 50  0001 C CNN
+	1    7100 4300
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR013
 U 1 1 5A3B8782
-P 6700 4400
-F 0 "#PWR013" H 6700 4150 50  0001 C CNN
-F 1 "GND" H 6705 4227 50  0000 C CNN
-F 2 "" H 6700 4400 50  0001 C CNN
-F 3 "" H 6700 4400 50  0001 C CNN
-	1    6700 4400
+P 6700 4200
+F 0 "#PWR013" H 6700 3950 50  0001 C CNN
+F 1 "GND" H 6705 4027 50  0000 C CNN
+F 2 "" H 6700 4200 50  0001 C CNN
+F 3 "" H 6700 4200 50  0001 C CNN
+	1    6700 4200
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6700 4400 6900 4400
-Wire Wire Line
-	6400 4500 6900 4500
-Wire Wire Line
-	6400 4600 6900 4600
-Text Label 6700 4500 0    60   ~ 0
+	6700 4200 6900 4200
+Text Label 6700 4300 0    60   ~ 0
 RX
-Text Label 6700 4600 0    60   ~ 0
+Text Label 6700 4400 0    60   ~ 0
 TX
-NoConn ~ 6400 4300
-NoConn ~ 6400 4200
 Wire Wire Line
 	6400 4100 6600 4100
 Wire Wire Line
@@ -543,8 +500,6 @@ Text Label 6600 3900 0    60   ~ 0
 D3
 NoConn ~ 6400 3800
 NoConn ~ 6400 3700
-NoConn ~ 6400 4700
-NoConn ~ 6400 4800
 $Comp
 L device:LED D2
 U 1 1 5A3CC537
@@ -1375,4 +1330,20 @@ Text Label 4450 1900 0    60   ~ 0
 D2
 Text Label 4450 2000 0    60   ~ 0
 D3
+NoConn ~ 1550 3100
+$Comp
+L atmel:ATMEGA8-16PU U1
+U 1 1 5A50A4B1
+P 5400 4000
+F 0 "U1" H 4750 5300 50  0000 C CNN
+F 1 "ATMEGA8-16PU" H 5950 5300 50  0000 C CNN
+F 2 "Housings_DIP:DIP-28_W7.62mm" H 5400 4000 50  0001 C CIN
+F 3 "http://www.atmel.com/images/atmel-2486-8-bit-avr-microcontroller-atmega8_l_datasheet.pdf" H 5400 4000 50  0001 C CNN
+	1    5400 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6400 4300 6900 4300
+Wire Wire Line
+	6400 4400 6900 4400
 $EndSCHEMATC
