@@ -2,8 +2,9 @@
 #define  USART_INC
 
 #include <inttypes.h>
+#include <avr/interrupt.h>
 
-#define F_CPU					9216000UL
+#define F_CPU					8000000UL
 
 #define USART_BAUDRATE 			19200UL
 #define USART_TX_BUFFER_SIZE	20

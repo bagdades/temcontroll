@@ -20,14 +20,13 @@
 #include <inttypes.h>
 #include <util/delay.h>
 #include <avr/io.h>
-#include <avr/interrupt.h>
 
-/* volatile uint8_t txTailBuffer; */
-/* volatile uint8_t txHeadBuffer; */
-/* volatile uint8_t txCountBuffer; */
-/* volatile uint8_t rxTailBuffer; */
-/* volatile uint8_t rxHeadBuffer; */
-/* volatile uint8_t rxCountBuffer; */
+volatile uint8_t txTailBuffer;
+volatile uint8_t txHeadBuffer;
+volatile uint8_t txCountBuffer;
+volatile uint8_t rxTailBuffer;
+volatile uint8_t rxHeadBuffer;
+volatile uint8_t rxCountBuffer;
 
 void UsartInit(void){
 	uint16_t i = USART_BAUDRATE_DIV;
@@ -39,15 +38,15 @@ void UsartInit(void){
 }
 
 void UsartPutChar(uint8_t ch){
-	/* if(bit_is_set(UCSRA,UDRE) && txCountBuffer == 0) */
-	/* 	UDR = ch; */
-	/* else if(txCountBuffer < USART_TX_BUFFER_SIZE){ */
-	/* 	txCountBuffer ++; */
-	/* 	usartTxBuffer[txHeadBuffer] = ch; */
-	/* 	txHeadBuffer ++; */
-	/* 	if(txHeadBuffer == USART_TX_BUFFER_SIZE) */
-	/* 		txHeadBuffer = 0; */
-	/* } */
+	if(bit_is_set(UCSRA,UDRE) && txCountBuffer == 0)
+		UDR = ch;
+	else if(txCountBuffer < USART_TX_BUFFER_SIZE){
+		txCountBuffer ++;
+		usartTxBuffer[txHeadBuffer] = ch;
+		txHeadBuffer ++;
+		if(txHeadBuffer == USART_TX_BUFFER_SIZE)
+			txHeadBuffer = 0;
+	}
 }
 
 void UsartPutString(uint8_t *string){
@@ -59,33 +58,33 @@ void UsartPutString(uint8_t *string){
 
 uint8_t  UsartGetChar(void){
 	uint8_t ch = 0;
-	/* if(rxCountBuffer){ */
-	/* 	ch = usartRxBuffer[rxTailBuffer]; */
-	/* 	rxCountBuffer --; */
-	/* 	rxTailBuffer ++; */
-	/* 	if(rxTailBuffer == USART_RX_BUFFER_SIZE) */
-	/* 		rxTailBuffer = 0; */
-	/* } */
+	if(rxCountBuffer){
+		ch = usartRxBuffer[rxTailBuffer];
+		rxCountBuffer --;
+		rxTailBuffer ++;
+		if(rxTailBuffer == USART_RX_BUFFER_SIZE)
+			rxTailBuffer = 0;
+	}
 	return ch;
 }
 
 ISR(USART_TXC_vect){
-	/* if(txCountBuffer){ */
-	/* 	UDR	= usartTxBuffer[txTailBuffer]; */
-	/* 	txCountBuffer --; */
-	/* 	txTailBuffer ++; */
-	/* 	if(txTailBuffer == USART_TX_BUFFER_SIZE) */
-	/* 		txTailBuffer = 0; */
-	/* } */
+	if(txCountBuffer){
+		UDR	= usartTxBuffer[txTailBuffer];
+		txCountBuffer --;
+		txTailBuffer ++;
+		if(txTailBuffer == USART_TX_BUFFER_SIZE)
+			txTailBuffer = 0;
+	}
 }
 
 ISR(USART_RXC_vect){
-	/* if(rxCountBuffer < USART_RX_BUFFER_SIZE){ */
-	/* 	usartRxBuffer[rxHeadBuffer] = UDR; */
-	/* 	rxHeadBuffer ++; */
-	/* 	rxCountBuffer ++; */
-	/* 	if(rxHeadBuffer ==  USART_TX_BUFFER_SIZE) */
-	/* 		rxHeadBuffer = 0; */
-	/* } */
+	if(rxCountBuffer < USART_RX_BUFFER_SIZE){
+		usartRxBuffer[rxHeadBuffer] = UDR;
+		rxHeadBuffer ++;
+		rxCountBuffer ++;
+		if(rxHeadBuffer ==  USART_TX_BUFFER_SIZE)
+			rxHeadBuffer = 0;
+	}
 }
 

@@ -7,20 +7,36 @@
 AS	Makefile	/^AS = avr-gcc$/;"	m
 CC	Makefile	/^CC = avr-gcc$/;"	m
 CP	Makefile	/^CP = avr-objcopy$/;"	m
-F_CPU	usart.h	6;"	d
+DEBUG	lcd.h	4;"	d
+DIG_1	lcd.h	13;"	d
+DIG_2	lcd.h	14;"	d
+DIG_3	lcd.h	15;"	d
+DIG_DDR	lcd.h	12;"	d
+DIG_MASK	lcd.h	18;"	d
+DIG_P	lcd.h	17;"	d
+DIG_PORT	lcd.h	11;"	d
+F_CPU	usart.h	7;"	d
 ISR	usart.c	/^ISR(USART_RXC_vect){$/;"	f
 ISR	usart.c	/^ISR(USART_TXC_vect){$/;"	f
+LCD_DDR	lcd.h	10;"	d
+LCD_INC	lcd.h	2;"	d
+LCD_PORT	lcd.h	9;"	d
 LD	Makefile	/^LD = avr-gcc$/;"	m
+LcdInit	lcd.c	/^void LcdInit(void)$/;"	f	signature:(void)
+LcdInit	lcd.h	/^void LcdInit(void);$/;"	p	signature:(void)
+LcdUpdate	lcd.c	/^void LcdUpdate(void)$/;"	f	signature:(void)
+LcdUpdate	lcd.h	/^void LcdUpdate(void);$/;"	p	signature:(void)
 MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
 OD	Makefile	/^OD = avr-objdump$/;"	m
+PROGMEM	lcd.h	/^static const uint8_t sevenSegmentCod[] PROGMEM = {$/;"	v
 RM	Makefile	/^RM = rm$/;"	m
 SZ	Makefile	/^SZ = avr-size$/;"	m
 TARGET	Makefile	/^TARGET = tempcontroll$/;"	m
-USART_BAUDRATE	usart.h	8;"	d
-USART_BAUDRATE_DIV	usart.h	11;"	d
+USART_BAUDRATE	usart.h	9;"	d
+USART_BAUDRATE_DIV	usart.h	12;"	d
 USART_INC	usart.h	2;"	d
-USART_RX_BUFFER_SIZE	usart.h	10;"	d
-USART_TX_BUFFER_SIZE	usart.h	9;"	d
+USART_RX_BUFFER_SIZE	usart.h	11;"	d
+USART_TX_BUFFER_SIZE	usart.h	10;"	d
 UsartGetChar	usart.c	/^uint8_t  UsartGetChar(void){$/;"	f	signature:(void)
 UsartGetChar	usart.h	/^uint8_t UsartGetChar	(void);$/;"	p	signature:(void)
 UsartInit	usart.c	/^void UsartInit(void){$/;"	f	signature:(void)
@@ -30,7 +46,14 @@ UsartPutChar	usart.h	/^void UsartPutChar		(uint8_t ch);$/;"	p	signature:(uint8_t
 UsartPutString	usart.c	/^void UsartPutString(uint8_t *string){$/;"	f	signature:(uint8_t *string)
 UsartPutString	usart.h	/^void UsartPutString		(uint8_t *string);$/;"	p	signature:(uint8_t *string)
 ch	usart.c	/^	uint8_t ch = 0;$/;"	l
+count	lcd.c	/^	static uint8_t count = 0;$/;"	l	file:
 i	usart.c	/^	uint16_t i = USART_BAUDRATE_DIV;$/;"	l
 main	main.c	/^int main(void)$/;"	f	signature:(void)
+rxCountBuffer	usart.c	/^volatile uint8_t rxCountBuffer;$/;"	v
+rxHeadBuffer	usart.c	/^volatile uint8_t rxHeadBuffer;$/;"	v
+rxTailBuffer	usart.c	/^volatile uint8_t rxTailBuffer;$/;"	v
+txCountBuffer	usart.c	/^volatile uint8_t txCountBuffer;$/;"	v
+txHeadBuffer	usart.c	/^volatile uint8_t txHeadBuffer;$/;"	v
+txTailBuffer	usart.c	/^volatile uint8_t txTailBuffer;$/;"	v
 usartRxBuffer	usart.h	/^volatile uint8_t usartRxBuffer[USART_TX_BUFFER_SIZE];$/;"	v
 usartTxBuffer	usart.h	/^volatile uint8_t usartTxBuffer[USART_TX_BUFFER_SIZE];$/;"	v
