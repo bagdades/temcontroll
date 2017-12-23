@@ -22,29 +22,31 @@ void LcdInit(void)
 {
 	LCD_DDR = 0xFF;			//port out
 	DIG_DDR |= DIG_MASK;	//port out
-	DIG_PORT |= DIG_MASK;	//hight level
+	DIG_PORT |= DIG_MASK;	//hight level, off all digits
+	LCD_PORT = 0xFF; //Off all segments
 }
-void LcdUpdate(void)
+
+void LcdUpdate(uint8_t* data)
 {
 	static uint8_t count = 0;
-	DIG_PORT |= DIG_MASK;
+	DIG_PORT |= DIG_MASK; //Off all digits
 	if(count == 0)
 	{
 		DIG_PORT &= ~(1 << DIG_3);
-		LCD_PORT = pgm_read_byte(sevenSegmentCod + dataOut[count + 1]);
+		LCD_PORT = pgm_read_byte(sevenSegmentCod + data[count + 1]);
         /* View mode heating */
 	}
 	else if(count == 1)
 	{
 		DIG_PORT &= ~(1 << DIG_2);
-		LCD_PORT = pgm_read_byte(sevenSegmentCod + dataOut[count + 1]);
+		LCD_PORT = pgm_read_byte(sevenSegmentCod + data[count + 1]);
 	}
 	else if(count == 2)
 	{
 		DIG_PORT &= ~(1 << DIG_1);
-		LCD_PORT = pgm_read_byte(sevenSegmentCod + dataOut[count + 1]);
-		if (flag.digPoint)
-			LCD_PORT |= (1 << DIG_P);
+		LCD_PORT = pgm_read_byte(sevenSegmentCod + data[count + 1]);
+		/* if (flag.digPoint) */
+		/* 	LCD_PORT |= (1 << DIG_P); */
 	}
 	count ++;
 	if(count > 2)

@@ -1,6 +1,10 @@
-syn keyword CTagsLocalVariable count ch i
-syn keyword CTagsGlobalVariable usartRxBuffer rxTailBuffer txCountBuffer txTailBuffer txHeadBuffer rxHeadBuffer usartTxBuffer rxCountBuffer
+syn keyword CTagsLocalVariable i count ch
+syn keyword CTagsStructure _flag
+syn keyword CTagsMember digPoint lcdUpdate modeEepromWrite eepromWrite adcRead keyScan readTemp tempEepromWrite setTempVisible
+syn keyword CTagsGlobalVariable countTimeAdcRead countTimeTempRead txCountBuffer countTimeWriteEeprom rxHeadBuffer countTimeLcdUpdate countSetTempVisible adcResult dataOut_ flag rxTailBuffer txTailBuffer usartRxBuffer rxCountBuffer txHeadBuffer countTimeKeyScan usartTxBuffer
 syn keyword CTagsConstant PROGMEM
-syn keyword CTagsFunction main LcdInit UsartPutString LcdUpdate UsartGetChar UsartPutChar ISR UsartInit
-syn keyword CTagsDefinedName DIG_MASK USART_BAUDRATE_DIV USART_INC LCD_PORT DIG_2 DIG_1 DEBUG DIG_DDR F_CPU LCD_INC LCD_DDR USART_BAUDRATE USART_RX_BUFFER_SIZE DIG_PORT DIG_P DIG_3 USART_TX_BUFFER_SIZE
+syn keyword CTagsEnumeratorName keyPad
+syn keyword CTagsEnumerationValue TRUE _UP MODE_TWO MODE_THREE MODE_FOUR FALSE _DOWN MODE_ONE
+syn keyword CTagsFunction SaveEepromMode Init ADCInit UsartPutChar UsartInit ENC_Scan KeyScan UsartPutString ADCRead Timer0Init main LcdUpdate ISR ResultBcd ENC_Init LcdInit UsartGetChar
+syn keyword CTagsDefinedName DEBUG DIG_MASK ENC_PORT ENCODER_INC USART_BAUDRATE_DIV DIG_1 TIME_WRITE_EEPROM TIME_SET_TEMP_VISIBLE ADC_VREF_TYPE PERIOD_KEY_SCAN LCD_INC USART_TX_BUFFER_SIZE PERIOD_ADC_READ USART_INC ENC_B_PIN LCD_PORT DIG_3 DIG_P T0_FREQ LCD_DDR DIG_DDR MIN_TEMP ENC_MASK TEMPCONTROLL_INC USART_RX_BUFFER_SIZE ENC_DDR ENC_PIN F_CPU T0_PRESC T0_INIT PERIOD_LCD_UPDATE ENC_A_PIN USART_BAUDRATE MAX_TEMP DIG_2 DIG_PORT PERIOD_TEMP_UPDATE
 
