@@ -2,6 +2,7 @@
 #define  ENCODER_INC
 
 #include <inttypes.h>
+#include <avr/io.h>
 
 #define ENC_PORT	PORTD
 #define ENC_DDR		DDRD
@@ -14,6 +15,6 @@
 
 //Prototypes
 void ENC_Init(void);
-void ENC_Scan(void);
+uint16_t ENC_Scan(void);
 
 #endif   /* ----- #ifndef ENCODER_INC  ----- */

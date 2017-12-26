@@ -8,7 +8,7 @@ ADCInit	tempcontroll.c	/^void ADCInit(void)$/;"	f	signature:(void)
 ADCInit	tempcontroll.h	/^void ADCInit		(void);$/;"	p	signature:(void)
 ADCRead	tempcontroll.c	/^int16_t ADCRead(uint8_t chanel)$/;"	f	signature:(uint8_t chanel)
 ADCRead	tempcontroll.h	/^int16_t ADCRead		(uint8_t chanel);$/;"	p	signature:(uint8_t chanel)
-ADC_VREF_TYPE	tempcontroll.h	24;"	d
+ADC_VREF_TYPE	tempcontroll.h	32;"	d
 AS	Makefile	/^AS = avr-gcc$/;"	m
 CC	Makefile	/^CC = avr-gcc$/;"	m
 CP	Makefile	/^CP = avr-objcopy$/;"	m
@@ -20,22 +20,23 @@ DIG_DDR	lcd.h	12;"	d
 DIG_MASK	lcd.h	18;"	d
 DIG_P	lcd.h	17;"	d
 DIG_PORT	lcd.h	11;"	d
+EEMEM	tempcontroll.c	/^uint16_t setTempEeprom EEMEM = 200;$/;"	v
 ENCODER_INC	encoder.h	2;"	d
-ENC_A_PIN	encoder.h	10;"	d
-ENC_B_PIN	encoder.h	11;"	d
-ENC_DDR	encoder.h	7;"	d
+ENC_A_PIN	encoder.h	11;"	d
+ENC_B_PIN	encoder.h	12;"	d
+ENC_DDR	encoder.h	8;"	d
 ENC_Init	encoder.c	/^void ENC_Init(void)$/;"	f	signature:(void)
 ENC_Init	encoder.h	/^void ENC_Init(void);$/;"	p	signature:(void)
-ENC_MASK	encoder.h	13;"	d
-ENC_PIN	encoder.h	8;"	d
-ENC_PORT	encoder.h	6;"	d
-ENC_Scan	encoder.c	/^void ENC_Scan(void)$/;"	f	signature:(void)
-ENC_Scan	encoder.h	/^void ENC_Scan(void);$/;"	p	signature:(void)
+ENC_MASK	encoder.h	14;"	d
+ENC_PIN	encoder.h	9;"	d
+ENC_PORT	encoder.h	7;"	d
+ENC_Scan	encoder.c	/^uint16_t ENC_Scan(void)$/;"	f	signature:(void)
+ENC_Scan	encoder.h	/^uint16_t ENC_Scan(void);$/;"	p	signature:(void)
 FALSE	tempcontroll.h	/^	FALSE = 0,$/;"	e	enum:__anon1
 F_CPU	usart.h	7;"	d
 ISR	tempcontroll.c	/^ISR(TIMER0_OVF_vect)$/;"	f
-ISR	usart.c	/^ISR(USART_RXC_vect){$/;"	f
-ISR	usart.c	/^ISR(USART_TXC_vect){$/;"	f
+ISR	usart.c	/^ISR(USART_RX_vect){$/;"	f
+ISR	usart.c	/^ISR(USART_TX_vect)$/;"	f
 Init	tempcontroll.c	/^void Init(void)$/;"	f	signature:(void)
 Init	tempcontroll.h	/^void Init			(void);$/;"	p	signature:(void)
 KeyScan	tempcontroll.h	/^void KeyScan		(void);$/;"	p	signature:(void)
@@ -43,22 +44,27 @@ LCD_DDR	lcd.h	10;"	d
 LCD_INC	lcd.h	2;"	d
 LCD_PORT	lcd.h	9;"	d
 LD	Makefile	/^LD = avr-gcc$/;"	m
+LED_DDR	tempcontroll.h	27;"	d
+LED_OFF	tempcontroll.h	30;"	d
+LED_ON	tempcontroll.h	29;"	d
+LED_OUT	tempcontroll.h	28;"	d
+LED_PORT	tempcontroll.h	26;"	d
 LcdInit	lcd.c	/^void LcdInit(void)$/;"	f	signature:(void)
 LcdInit	lcd.h	/^void LcdInit(void);$/;"	p	signature:(void)
 LcdUpdate	lcd.c	/^void LcdUpdate(uint8_t* data)$/;"	f	signature:(uint8_t* data)
 LcdUpdate	lcd.h	/^void LcdUpdate(uint8_t* data);$/;"	p	signature:(uint8_t* data)
-MAX_TEMP	tempcontroll.h	21;"	d
-MCU	Makefile	/^MCU = mcu=atmega8$/;"	m
-MIN_TEMP	tempcontroll.h	22;"	d
+MAX_TEMP	tempcontroll.h	22;"	d
+MCU	Makefile	/^MCU = mcu=atmega48pa$/;"	m
+MIN_TEMP	tempcontroll.h	23;"	d
 MODE_FOUR	tempcontroll.h	/^	MODE_FOUR$/;"	e	enum:__anon2
 MODE_ONE	tempcontroll.h	/^	MODE_ONE = 0,$/;"	e	enum:__anon2
 MODE_THREE	tempcontroll.h	/^	MODE_THREE,$/;"	e	enum:__anon2
 MODE_TWO	tempcontroll.h	/^	MODE_TWO,$/;"	e	enum:__anon2
 OD	Makefile	/^OD = avr-objdump$/;"	m
-PERIOD_ADC_READ	tempcontroll.h	17;"	d
-PERIOD_KEY_SCAN	tempcontroll.h	15;"	d
-PERIOD_LCD_UPDATE	tempcontroll.h	16;"	d
-PERIOD_TEMP_UPDATE	tempcontroll.h	18;"	d
+PERIOD_ADC_READ	tempcontroll.h	18;"	d
+PERIOD_KEY_SCAN	tempcontroll.h	16;"	d
+PERIOD_LCD_UPDATE	tempcontroll.h	17;"	d
+PERIOD_TEMP_UPDATE	tempcontroll.h	19;"	d
 PROGMEM	lcd.h	/^static const uint8_t sevenSegmentCod[] PROGMEM = {$/;"	v
 RM	Makefile	/^RM = rm$/;"	m
 ResultBcd	tempcontroll.c	/^void ResultBcd(uint16_t data, uint8_t dataOut[4])$/;"	f	signature:(uint16_t data, uint8_t dataOut[4])
@@ -66,13 +72,13 @@ ResultBcd	tempcontroll.h	/^void ResultBcd		(uint16_t data, uint8_t dataOut[4]);$
 SZ	Makefile	/^SZ = avr-size$/;"	m
 SaveEepromMode	tempcontroll.c	/^void SaveEepromMode(void)$/;"	f	signature:(void)
 SaveEepromMode	tempcontroll.h	/^void SaveEepromMode	(void);$/;"	p	signature:(void)
-T0_FREQ	tempcontroll.h	11;"	d
-T0_INIT	tempcontroll.h	12;"	d
-T0_PRESC	tempcontroll.h	10;"	d
+T0_FREQ	tempcontroll.h	12;"	d
+T0_INIT	tempcontroll.h	13;"	d
+T0_PRESC	tempcontroll.h	11;"	d
 TARGET	Makefile	/^TARGET = tempcontroll$/;"	m
 TEMPCONTROLL_INC	tempcontroll.h	2;"	d
-TIME_SET_TEMP_VISIBLE	tempcontroll.h	20;"	d
-TIME_WRITE_EEPROM	tempcontroll.h	19;"	d
+TIME_SET_TEMP_VISIBLE	tempcontroll.h	21;"	d
+TIME_WRITE_EEPROM	tempcontroll.h	20;"	d
 TRUE	tempcontroll.h	/^	TRUE$/;"	e	enum:__anon1
 Timer0Init	tempcontroll.c	/^void Timer0Init(void)$/;"	f	signature:(void)
 Timer0Init	tempcontroll.h	/^void Timer0Init		(void);$/;"	p	signature:(void)
@@ -101,6 +107,7 @@ _flag::modeEepromWrite	tempcontroll.h	/^	uint16_t modeEepromWrite:1;$/;"	m	struc
 _flag::readTemp	tempcontroll.h	/^	uint16_t readTemp:		1;$/;"	m	struct:_flag	access:public
 _flag::setTempVisible	tempcontroll.h	/^	uint16_t setTempVisible:	1;$/;"	m	struct:_flag	access:public
 _flag::tempEepromWrite	tempcontroll.h	/^	uint16_t tempEepromWrite:1;$/;"	m	struct:_flag	access:public
+a	main.c	/^uint8_t a = 0;$/;"	v
 adcRead	tempcontroll.h	/^	uint16_t adcRead:		1;$/;"	m	struct:_flag	access:public
 adcResult	tempcontroll.c	/^int16_t adcResult;$/;"	v
 ch	usart.c	/^	uint8_t ch = 0;$/;"	l
@@ -111,21 +118,26 @@ countTimeKeyScan	tempcontroll.c	/^volatile uint8_t countTimeKeyScan = PERIOD_KEY
 countTimeLcdUpdate	tempcontroll.c	/^volatile uint8_t countTimeLcdUpdate = PERIOD_LCD_UPDATE;$/;"	v
 countTimeTempRead	tempcontroll.c	/^volatile uint16_t countTimeTempRead = PERIOD_TEMP_UPDATE;$/;"	v
 countTimeWriteEeprom	tempcontroll.c	/^volatile uint16_t countTimeWriteEeprom = 0;$/;"	v
-dataOut_	main.c	/^uint8_t dataOut_[4];$/;"	v
+data	main.c	/^uint16_t data = 312;$/;"	v
+dataOut_	main.c	/^uint8_t dataOut_[4] = {1, 1, 2, 3};$/;"	v
 digPoint	tempcontroll.h	/^	uint16_t digPoint:		1;$/;"	m	struct:_flag	access:public
 eepromWrite	tempcontroll.h	/^	uint16_t eepromWrite:	1;$/;"	m	struct:_flag	access:public
+encState	encoder.c	/^static uint8_t encState = 0;$/;"	v	file:
+encValue	encoder.c	/^static volatile int16_t encValue = 0;$/;"	v	file:
 flag	tempcontroll.h	/^}flag;$/;"	v	typeref:struct:_flag
-i	tempcontroll.c	/^	uint8_t i;$/;"	l
+fullState	encoder.c	/^	uint8_t fullState = newState | (encState << 2);$/;"	l
 i	usart.c	/^	uint16_t i = USART_BAUDRATE_DIV;$/;"	l
 keyPad	tempcontroll.h	/^enum keyPad{$/;"	g
 keyScan	tempcontroll.h	/^	uint16_t keyScan:		1;$/;"	m	struct:_flag	access:public
 lcdUpdate	tempcontroll.h	/^	uint16_t lcdUpdate:		1;$/;"	m	struct:_flag	access:public
 main	main.c	/^int main(void)$/;"	f	signature:(void)
 modeEepromWrite	tempcontroll.h	/^	uint16_t modeEepromWrite:1;$/;"	m	struct:_flag	access:public
+newState	encoder.c	/^	uint8_t newState = ENC_PIN >> 6;$/;"	l
 readTemp	tempcontroll.h	/^	uint16_t readTemp:		1;$/;"	m	struct:_flag	access:public
 rxCountBuffer	usart.c	/^volatile uint8_t rxCountBuffer;$/;"	v
 rxHeadBuffer	usart.c	/^volatile uint8_t rxHeadBuffer;$/;"	v
 rxTailBuffer	usart.c	/^volatile uint8_t rxTailBuffer;$/;"	v
+setTemp	tempcontroll.c	/^int16_t setTemp;$/;"	v
 setTempVisible	tempcontroll.h	/^	uint16_t setTempVisible:	1;$/;"	m	struct:_flag	access:public
 tempEepromWrite	tempcontroll.h	/^	uint16_t tempEepromWrite:1;$/;"	m	struct:_flag	access:public
 txCountBuffer	usart.c	/^volatile uint8_t txCountBuffer;$/;"	v

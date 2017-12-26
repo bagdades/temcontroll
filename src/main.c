@@ -21,7 +21,9 @@
 #include "tempcontroll.h"
 #include "encoder.h"
 
-uint8_t dataOut_[4];
+uint8_t dataOut_[4] = {1, 1, 2, 3};
+uint8_t a = 0;
+uint16_t data = 312;
 
 int main(void)
 {
@@ -29,12 +31,47 @@ int main(void)
 	UsartInit();
 	LcdInit();
 	Timer0Init();
-	ADCInit();
+	/* ADCInit(); */
 	Init();
 	sei();
+	countSetTempVisible = TIME_SET_TEMP_VISIBLE;
+	flag.setTempVisible = TRUE;
 	while(1)
 	{
-		ResultBcd(200, dataOut_);
-		LcdUpdate(dataOut_);
+		if (flag.keyScan) 
+		{
+			flag.keyScan = 0;	
+			setTemp = ENC_Scan();
+			countTimeWriteEeprom = TIME_WRITE_EEPROM;
+			flag.tempEepromWrite = TRUE;
+			countSetTempVisible = TIME_SET_TEMP_VISIBLE;
+			flag.setTempVisible = TRUE;
+		}
+		if (flag.setTempVisible) 
+		{
+			ResultBcd(setTemp, dataOut_);
+		}
+		else
+		{
+			ResultBcd(data, dataOut_);
+		}
+		if (flag.lcdUpdate) 
+		{
+			LcdUpdate(dataOut_);	
+			flag.lcdUpdate = 0;
+		}
+		if (flag.readTemp) 
+		{
+			flag.readTemp = 0;
+			if (a == 0) 
+			{
+				LED_ON;
+				a = 1;
+			}		
+			else {
+				LED_OFF;
+				a = 0;
+			}
+		}
 	}
 }

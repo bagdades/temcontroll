@@ -19,6 +19,8 @@
 #include "tempcontroll.h"
 
 int16_t adcResult;
+uint16_t setTempEeprom EEMEM = 200;
+int16_t setTemp;
 
 volatile uint8_t countTimeKeyScan = PERIOD_KEY_SCAN;
 volatile uint8_t countTimeLcdUpdate = PERIOD_LCD_UPDATE;
@@ -30,6 +32,9 @@ volatile uint16_t countSetTempVisible = 0;
 
 void Init(void)
 {
+	LED_DDR |= (1 << LED_OUT);
+	LED_OFF;
+	setTemp = eeprom_read_word(&setTempEeprom);//read from eeprom temp value
 	/* BUT_DDR &= ~BUT_MASK;	//port in */
 	/* BUT_PORT |= BUT_MASK;	//pull-up */
 	/* CONTR_DDR |= 1 << CONTR_OUT; */
@@ -41,9 +46,9 @@ void Timer0Init(void)
 #if(F_CPU != 8000000)
 #error ***You must set TCCR0
 #endif
-	TCCR0|=(1<<CS02)|(1<<CS00);//T0_PRESC = 1024
+	TCCR0B|=(1<<CS02)|(1<<CS00);//T0_PRESC = 1024
 	TCNT0 = T0_INIT;
-	TIMSK|=(1<<TOIE0);//enable interrupt overllow timer0
+	TIMSK0|=(1<<TOIE0);//enable interrupt overllow timer0
 }
 
 ISR(TIMER0_OVF_vect)
@@ -111,15 +116,15 @@ int16_t ADCRead(uint8_t chanel)
 
 void ResultBcd(uint16_t data, uint8_t dataOut[4])
 {
-	uint8_t i;
-	if(adcResult > 1000 || adcResult < 3)
-	{//якщо обрив датчика ,або коротке замикання
-		for (i = 0; i <= 3; i++) 
-		{
-			dataOut[i] = 10;//виводимо на дисплей рисочки
-		}
-		return ;
-	}
+	/* uint8_t i; */
+	/* if(adcResult > 1000 || adcResult < 3) */
+	/* {//якщо обрив датчика ,або коротке замикання */
+	/* 	for (i = 0; i <= 3; i++)  */
+	/* 	{ */
+	/* 		dataOut[i] = 10;//виводимо на дисплей рисочки */
+	/* 	} */
+	/* 	return ; */
+	/* } */
 	dataOut[1] = data/100;
 	dataOut[2] = (data / 10) % 10;
 	dataOut[3] = data % 10;
@@ -127,10 +132,10 @@ void ResultBcd(uint16_t data, uint8_t dataOut[4])
 
 void SaveEepromMode(void)
 {
-	/* if(flag.tempEepromWrite) */
-	/* { */
-	/* 	eeprom_write_word(&setTempEeprom,setTemp); */
-	/* 	flag.tempEepromWrite = FALSE; */
-	/* } */
-	/* flag.eepromWrite = FALSE; */
+	if(flag.tempEepromWrite)
+	{
+		eeprom_write_word(&setTempEeprom,setTemp);
+		flag.tempEepromWrite = FALSE;
+	}
+	flag.eepromWrite = FALSE;
 }
