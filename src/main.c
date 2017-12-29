@@ -27,12 +27,12 @@ uint16_t data = 312;
 
 int main(void)
 {
-	ENC_Init();
 	UsartInit();
 	LcdInit();
 	Timer0Init();
 	/* ADCInit(); */
 	Init();
+	ENC_Init(setTemp);
 	sei();
 	countSetTempVisible = TIME_SET_TEMP_VISIBLE;
 	flag.setTempVisible = TRUE;
@@ -41,11 +41,17 @@ int main(void)
 		if (flag.keyScan) 
 		{
 			flag.keyScan = 0;	
-			setTemp = ENC_Scan();
-			countTimeWriteEeprom = TIME_WRITE_EEPROM;
-			flag.tempEepromWrite = TRUE;
-			countSetTempVisible = TIME_SET_TEMP_VISIBLE;
-			flag.setTempVisible = TRUE;
+			if (ENC_Scan(&setTemp)) 
+			{
+				countTimeWriteEeprom = TIME_WRITE_EEPROM;
+				flag.tempEepromWrite = TRUE;
+				countSetTempVisible = TIME_SET_TEMP_VISIBLE;
+				flag.setTempVisible = TRUE;
+			}
+		}
+		if(flag.eepromWrite)
+		{
+			SaveEepromMode();
 		}
 		if (flag.setTempVisible) 
 		{

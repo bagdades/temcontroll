@@ -21,13 +21,14 @@
 static uint8_t encState = 0;
 static volatile int16_t encValue = 0;
 
-void ENC_Init(void)
+void ENC_Init(int16_t startValue)
 {
 	ENC_DDR &= ~ENC_MASK;// In
 	ENC_PORT |= ENC_MASK;//Pull-up
+	encValue = startValue << 2;
 }
 
-uint16_t ENC_Scan(void)
+uint8_t  ENC_Scan(int16_t* value)
 {
 	uint8_t newState = ENC_PIN >> 6;
 	uint8_t fullState = newState | (encState << 2);
@@ -39,6 +40,9 @@ uint16_t ENC_Scan(void)
 		case 0x1: case 0x7: case 0x8: case 0xE:
 			encValue++;
 			break;
+		default:
+			return FALSE;
+			break;
 	}
 	encState = newState;
 	if (encValue > 1000) 
@@ -49,5 +53,6 @@ uint16_t ENC_Scan(void)
 	{
 		encValue = 0;
 	}
-	return (uint16_t) encValue >> 2;
+	*value = encValue >> 2;
+	return TRUE;
 }

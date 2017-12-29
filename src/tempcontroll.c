@@ -35,10 +35,7 @@ void Init(void)
 	LED_DDR |= (1 << LED_OUT);
 	LED_OFF;
 	setTemp = eeprom_read_word(&setTempEeprom);//read from eeprom temp value
-	/* BUT_DDR &= ~BUT_MASK;	//port in */
-	/* BUT_PORT |= BUT_MASK;	//pull-up */
 	/* CONTR_DDR |= 1 << CONTR_OUT; */
-	/* setTemp = eeprom_read_word(&setTempEeprom);//read from eeprom temp value */
 }
 
 void Timer0Init(void)
