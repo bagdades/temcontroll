@@ -30,8 +30,8 @@ ENC_Init	encoder.h	/^void ENC_Init(int16_t startValue);$/;"	p	signature:(int16_t
 ENC_MASK	encoder.h	15;"	d
 ENC_PIN	encoder.h	10;"	d
 ENC_PORT	encoder.h	8;"	d
-ENC_Scan	encoder.c	/^uint8_t  ENC_Scan(int16_t* value)$/;"	f	signature:(int16_t* value)
-ENC_Scan	encoder.h	/^uint8_t ENC_Scan(int16_t* value);$/;"	p	signature:(int16_t* value)
+ENC_Scan	encoder.c	/^uint8_t  ENC_Scan(int16_t* value, uint16_t maxValue)$/;"	f	signature:(int16_t* value, uint16_t maxValue)
+ENC_Scan	encoder.h	/^uint8_t ENC_Scan(int16_t* value, uint16_t maxValue);$/;"	p	signature:(int16_t* value, uint16_t maxValue)
 FALSE	tempcontroll.h	/^	FALSE = 0,$/;"	e	enum:__anon1
 F_CPU	usart.h	7;"	d
 ISR	tempcontroll.c	/^ISR(TIMER0_OVF_vect)$/;"	f
@@ -126,6 +126,7 @@ countTimeKeyScan	tempcontroll.c	/^volatile uint8_t countTimeKeyScan = PERIOD_KEY
 countTimeLcdUpdate	tempcontroll.c	/^volatile uint8_t countTimeLcdUpdate = PERIOD_LCD_UPDATE;$/;"	v
 countTimeTempRead	tempcontroll.c	/^volatile uint16_t countTimeTempRead = PERIOD_TEMP_UPDATE;$/;"	v
 countTimeWriteEeprom	tempcontroll.c	/^volatile uint16_t countTimeWriteEeprom = 0;$/;"	v
+currTemp	main.c	/^			uint16_t currTemp = (adcResult * 17) \/ 24;$/;"	l
 currTemperature	main.c	/^uint16_t currTemperature;$/;"	v
 dataOut_	main.c	/^uint8_t dataOut_[4] = {1, 1, 2, 3};$/;"	v
 digPoint	tempcontroll.h	/^	uint16_t digPoint:		1;$/;"	m	struct:_flag	access:public
@@ -134,7 +135,7 @@ encState	encoder.c	/^static uint8_t encState = 0;$/;"	v	file:
 encValue	encoder.c	/^static volatile int16_t encValue = 0;$/;"	v	file:
 flag	tempcontroll.h	/^}flag;$/;"	v	typeref:struct:_flag
 fullState	encoder.c	/^	uint8_t fullState = newState | (encState << 2);$/;"	l
-histerezis	main.c	/^			static uint8_t histerezis = 0;$/;"	l	file:
+histerezis	main.c	/^	uint8_t histerezis = 0;$/;"	l
 i	tempcontroll.c	/^	uint8_t i;$/;"	l
 i	usart.c	/^	uint16_t i = USART_BAUDRATE_DIV;$/;"	l
 keyPad	tempcontroll.h	/^enum keyPad{$/;"	g

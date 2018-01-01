@@ -56,6 +56,7 @@ int main(void)
 			tempData = (setTemp * 24) / 17;
 			flag.adcRead = FALSE;
 			adcResult = ADCRead(0);
+			uint16_t currTemp = (adcResult * 17) / 24;
 			if (adcResult <= (tempData - histerezis))
 			{
 				LED_ON();
@@ -68,6 +69,12 @@ int main(void)
 				REL1_OFF();
 				histerezis = 7;
 			}
+			if ( currTemp > (setTemp - 50) ) {
+				REL2_ON();
+			}
+			else {
+				REL2_OFF();
+				}
 		}
 		if (flag.readTemp) 
 		{

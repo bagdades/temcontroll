@@ -1,4 +1,4 @@
-syn keyword CTagsLocalVariable count newState tempData i fullState ch histerezis
+syn keyword CTagsLocalVariable currTemp count newState tempData i fullState ch histerezis
 syn keyword CTagsStructure _flag
 syn keyword CTagsMember eepromWrite tempEepromWrite adcRead digPoint lcdUpdate modeEepromWrite setTempVisible keyScan readTemp
 syn keyword CTagsGlobalVariable countTimeTempRead rxTailBuffer countTimeAdcRead rxHeadBuffer rxCountBuffer usartTxBuffer usartRxBuffer adcResult countTimeLcdUpdate countTimeKeyScan txTailBuffer txHeadBuffer dataOut_ encState setTemp countTimeWriteEeprom currTemperature encValue countSetTempVisible txCountBuffer flag EEMEM
