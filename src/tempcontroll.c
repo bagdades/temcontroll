@@ -18,7 +18,7 @@
 
 #include "tempcontroll.h"
 
-int16_t adcResult;
+/* int16_t adcResult; */
 uint16_t setTempEeprom EEMEM = 200;
 int16_t setTemp;
 
@@ -33,7 +33,9 @@ volatile uint16_t countSetTempVisible = 0;
 void Init(void)
 {
 	LED_DDR |= (1 << LED_OUT);
-	LED_OFF;
+	LED_OFF();
+	REL_DDR |= REL_MASK;//Pin to output
+	REL_PORT &= ~REL_MASK;//Relays off
 	setTemp = eeprom_read_word(&setTempEeprom);//read from eeprom temp value
 	/* CONTR_DDR |= 1 << CONTR_OUT; */
 }
@@ -95,7 +97,7 @@ void ADCInit(void)
 #error ***You must set ADCSRA
 #endif
 	ADCSRA|=(1<<ADPS2)|(1<<ADPS1)|(1<<ADEN); //PRESC F_CPU/64
-	ADMUX|=ADC_VREF_TYPE; //vref
+	ADMUX &= ~ADC_VREF_TYPE; //AREF, Internal Vref turned off
 }
 
 int16_t ADCRead(uint8_t chanel)
@@ -111,17 +113,17 @@ int16_t ADCRead(uint8_t chanel)
 	return ADCW;
 }
 
-void ResultBcd(uint16_t data, uint8_t dataOut[4])
+void ResultBcd(uint16_t data, int16_t contrlValue, uint16_t upLimit, uint8_t dataOut[4])
 {
-	/* uint8_t i; */
-	/* if(adcResult > 1000 || adcResult < 3) */
-	/* {//якщо обрив датчика ,або коротке замикання */
-	/* 	for (i = 0; i <= 3; i++)  */
-	/* 	{ */
-	/* 		dataOut[i] = 10;//виводимо на дисплей рисочки */
-	/* 	} */
-	/* 	return ; */
-	/* } */
+	uint8_t i;
+	if(contrlValue > upLimit)
+	{//якщо обрив датчика ,або коротке замикання
+		for (i = 0; i <= 3; i++) 
+		{
+			dataOut[i] = 10;//виводимо на дисплей рисочки
+		}
+		return ;
+	}
 	dataOut[1] = data/100;
 	dataOut[2] = (data / 10) % 10;
 	dataOut[3] = data % 10;

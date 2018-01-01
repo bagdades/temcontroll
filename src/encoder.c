@@ -28,7 +28,7 @@ void ENC_Init(int16_t startValue)
 	encValue = startValue << 2;
 }
 
-uint8_t  ENC_Scan(int16_t* value)
+uint8_t  ENC_Scan(int16_t* value, uint16_t maxValue)
 {
 	uint8_t newState = ENC_PIN >> 6;
 	uint8_t fullState = newState | (encState << 2);
@@ -45,9 +45,9 @@ uint8_t  ENC_Scan(int16_t* value)
 			break;
 	}
 	encState = newState;
-	if (encValue > 1000) 
+	if (encValue > (maxValue << 2)) 
 	{
-		encValue = 1000;
+		encValue = (maxValue << 2);
 	}
 	if (encValue < 0) 
 	{

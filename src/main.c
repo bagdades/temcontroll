@@ -22,15 +22,16 @@
 #include "encoder.h"
 
 uint8_t dataOut_[4] = {1, 1, 2, 3};
-uint8_t a = 0;
-uint16_t data = 312;
+int16_t adcResult;
+uint16_t currTemperature;
 
 int main(void)
 {
+	uint8_t histerezis = 0;
 	UsartInit();
 	LcdInit();
 	Timer0Init();
-	/* ADCInit(); */
+	ADCInit();
 	Init();
 	ENC_Init(setTemp);
 	sei();
@@ -41,7 +42,7 @@ int main(void)
 		if (flag.keyScan) 
 		{
 			flag.keyScan = 0;	
-			if (ENC_Scan(&setTemp)) 
+			if (ENC_Scan(&setTemp, MAX_TEMP)) 
 			{
 				countTimeWriteEeprom = TIME_WRITE_EEPROM;
 				flag.tempEepromWrite = TRUE;
@@ -49,35 +50,46 @@ int main(void)
 				flag.setTempVisible = TRUE;
 			}
 		}
-		if(flag.eepromWrite)
+		if (flag.adcRead) 
 		{
-			SaveEepromMode();
+			int16_t tempData;
+			tempData = (setTemp * 24) / 17;
+			flag.adcRead = FALSE;
+			adcResult = ADCRead(0);
+			if (adcResult <= (tempData - histerezis))
+			{
+				LED_ON();
+				REL1_ON();
+				histerezis = 0;
+			}
+			else 
+			{
+				LED_OFF();
+				REL1_OFF();
+				histerezis = 7;
+			}
+		}
+		if (flag.readTemp) 
+		{
+			flag.readTemp = FALSE;
+			currTemperature = (adcResult * 17) / 24;
 		}
 		if (flag.setTempVisible) 
 		{
-			ResultBcd(setTemp, dataOut_);
+			ResultBcd(setTemp, setTemp, 1000, dataOut_);
 		}
 		else
 		{
-			ResultBcd(data, dataOut_);
+			ResultBcd(currTemperature, adcResult, 1000, dataOut_);
 		}
 		if (flag.lcdUpdate) 
 		{
 			LcdUpdate(dataOut_);	
 			flag.lcdUpdate = 0;
 		}
-		if (flag.readTemp) 
+		if(flag.eepromWrite)
 		{
-			flag.readTemp = 0;
-			if (a == 0) 
-			{
-				LED_ON;
-				a = 1;
-			}		
-			else {
-				LED_OFF;
-				a = 0;
-			}
+			SaveEepromMode();
 		}
 	}
 }

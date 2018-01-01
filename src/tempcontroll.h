@@ -19,17 +19,28 @@
 #define PERIOD_TEMP_UPDATE		500
 #define TIME_WRITE_EEPROM		3000
 #define TIME_SET_TEMP_VISIBLE 	2000
-#define MAX_TEMP				250
+#define MAX_TEMP				300
 #define	MIN_TEMP				100
 
 //Output
 #define LED_PORT	PORTD
 #define LED_DDR		DDRD
 #define LED_OUT			3
-#define LED_ON			(LED_PORT &= ~(1 << LED_OUT))
-#define LED_OFF			(LED_PORT |= (1 << LED_OUT))
+#define LED_ON()			(LED_PORT &= ~(1 << LED_OUT))
+#define LED_OFF()			(LED_PORT |= (1 << LED_OUT))
+
+#define REL_PORT	PORTD
+#define REL_DDR		DDRD
+#define REL1		4
+#define REL2		5
+#define REL_MASK	((1 << REL1)|(1 << REL2))
+#define REL1_ON()	(REL_PORT |= (1 << REL1))
+#define REL1_OFF()	(REL_PORT &= ~(1 << REL1))
+#define REL2_ON()	(REL_PORT |= (1 << REL2))
+#define REL2_OFF()	(REL_PORT &= ~(1 << REL2))
 
 #define ADC_VREF_TYPE ((1<<REFS1)|(1<<REFS0))
+
 
 volatile struct _flag{
 	uint16_t keyScan:		1;
@@ -71,6 +82,6 @@ void Timer0Init		(void);
 void KeyScan		(void);
 void ADCInit		(void);
 int16_t ADCRead		(uint8_t chanel);
-void ResultBcd		(uint16_t data, uint8_t dataOut[4]);
+void ResultBcd		(uint16_t data, int16_t contrlValue, uint16_t upLimit, uint8_t dataOut[4]);
 void SaveEepromMode	(void);
 #endif   /* ----- #ifndef TEMPCONTROLL_INC  ----- */

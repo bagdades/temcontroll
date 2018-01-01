@@ -1,10 +1,11 @@
-syn keyword CTagsLocalVariable newState fullState i count ch
+syn keyword CTagsLocalVariable count newState tempData i fullState ch histerezis
 syn keyword CTagsStructure _flag
-syn keyword CTagsMember modeEepromWrite setTempVisible adcRead tempEepromWrite lcdUpdate readTemp keyScan digPoint eepromWrite
-syn keyword CTagsGlobalVariable setTemp countTimeLcdUpdate countSetTempVisible rxTailBuffer usartTxBuffer a dataOut_ adcResult encState countTimeKeyScan countTimeAdcRead EEMEM encValue rxHeadBuffer flag countTimeTempRead usartRxBuffer countTimeWriteEeprom data txTailBuffer txCountBuffer rxCountBuffer txHeadBuffer
+syn keyword CTagsMember eepromWrite tempEepromWrite adcRead digPoint lcdUpdate modeEepromWrite setTempVisible keyScan readTemp
+syn keyword CTagsGlobalVariable countTimeTempRead rxTailBuffer countTimeAdcRead rxHeadBuffer rxCountBuffer usartTxBuffer usartRxBuffer adcResult countTimeLcdUpdate countTimeKeyScan txTailBuffer txHeadBuffer dataOut_ encState setTemp countTimeWriteEeprom currTemperature encValue countSetTempVisible txCountBuffer flag EEMEM
 syn keyword CTagsConstant PROGMEM
 syn keyword CTagsEnumeratorName keyPad
-syn keyword CTagsEnumerationValue FALSE TRUE _UP MODE_THREE MODE_FOUR _DOWN MODE_ONE MODE_TWO
-syn keyword CTagsFunction ENC_Scan ADCInit ISR SaveEepromMode ADCRead UsartGetChar main LcdInit UsartInit Init ENC_Init ResultBcd Timer0Init UsartPutString UsartPutChar LcdUpdate KeyScan
-syn keyword CTagsDefinedName ADC_VREF_TYPE DEBUG PERIOD_TEMP_UPDATE USART_BAUDRATE USART_TX_BUFFER_SIZE PERIOD_LCD_UPDATE DIG_3 DIG_P LCD_DDR MIN_TEMP LED_OUT DIG_PORT USART_INC F_CPU LED_DDR MAX_TEMP T0_FREQ ENC_DDR ENC_PIN LCD_PORT DIG_MASK LCD_INC ENC_MASK TEMPCONTROLL_INC USART_BAUDRATE_DIV ENC_PORT DIG_1 ENC_A_PIN LED_PORT TIME_SET_TEMP_VISIBLE PERIOD_KEY_SCAN T0_PRESC ENC_B_PIN USART_RX_BUFFER_SIZE ENCODER_INC DIG_DDR LED_OFF PERIOD_ADC_READ T0_INIT TIME_WRITE_EEPROM LED_ON DIG_2
+syn keyword CTagsEnumerationValue MODE_THREE TRUE _UP _DOWN MODE_FOUR MODE_TWO FALSE MODE_ONE
+syn keyword CTagsFunction ADCInit ENC_Init main Init ENC_Scan LcdInit Timer0Init KeyScan ResultBcd UsartPutChar SaveEepromMode UsartInit LcdUpdate UsartGetChar ADCRead UsartPutString ISR
+syn keyword CTagsDefinedName ENC_B_PIN F_CPU ENC_A_PIN REL1_OFF T0_INIT REL_PORT T0_FREQ ENC_PORT ENC_PIN DIG_DDR REL2_OFF REL2 TEMPCONTROLL_INC TIME_WRITE_EEPROM REL2_ON LED_OUT USART_RX_BUFFER_SIZE DEBUG ENC_DDR ENCODER_INC ENC_MASK LED_ON ADC_VREF_TYPE DIG_3 DIG_2 USART_BAUDRATE DIG_PORT DIG_P LCD_DDR PERIOD_KEY_SCAN LED_PORT REL1 MAX_TEMP MIN_TEMP TIME_SET_TEMP_VISIBLE REL1_ON LED_OFF LCD_PORT PERIOD_TEMP_UPDATE PERIOD_LCD_UPDATE T0_PRESC PERIOD_ADC_READ LCD_INC USART_INC REL_MASK USART_BAUDRATE_DIV
+syn keyword CTagsDefinedName USART_TX_BUFFER_SIZE REL_DDR DIG_MASK LED_DDR DIG_1
 

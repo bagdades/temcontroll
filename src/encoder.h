@@ -16,6 +16,6 @@
 
 //Prototypes
 void ENC_Init(int16_t startValue);
-uint8_t ENC_Scan(int16_t* value);
+uint8_t ENC_Scan(int16_t* value, uint16_t maxValue);
 
 #endif   /* ----- #ifndef ENCODER_INC  ----- */
